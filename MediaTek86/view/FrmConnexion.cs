@@ -1,5 +1,7 @@
-﻿using System;
+﻿using MediaTek86.controller;
+using System;
 using System.Windows.Forms;
+using MediaTek86.model;
 
 /// <summary>
 /// 
@@ -7,38 +9,64 @@ using System.Windows.Forms;
 namespace MediaTek86.view
 {
     /// <summary>
-    /// Fenêtre de connexion pour accéder à la fenêtre qui permet de gérer le personnel et les absences
+    /// Fenêtre de connexion pour accéder à la fenêtre qui permet de gérer le personnel et les absences (seul le responsable peut se connecter)
     /// </summary>
     public partial class frmConnexion : Form
     {
+        /// <summary>
+        /// contrôleur de la fenêtre
+        /// </summary>
+        private FrmConnexionController controller;
         /// <summary>
         /// Construction des composants graphiques et appels des autres initialisations
         /// </summary>
         public frmConnexion()
         {
             InitializeComponent();
+            Init();
         }
-
         /// <summary>
-        /// Ferme cette fenêtre et ouvre la fenêtre "Personnel" si le login et le mot de passe sont correctes. Affiche une erreur
-        /// si les champs sont vides.
+        /// Initialisation : 
+        /// création du contrôleur
+        /// </summary>
+        private void Init()
+        {
+            controller = new FrmConnexionController();
+        }
+        /// <summary>
+        /// demande au contrôleur de vérifier les informations de connexion
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnConnexion_Click(object sender, EventArgs e)
         {
-            if (txtLogin.Text.Equals("") || txtPwd.Text.Equals(""))
+            String login = txtLogin.Text;
+            String pwd = txtPwd.Text;
+            if (String.IsNullOrEmpty(login) || String.IsNullOrEmpty(pwd))
             {
-                MessageBox.Show("les champs ne doivent pas être vides");
+                MessageBox.Show("les champs ne doivent pas être vides","informations");
+            }
+            else
+            {
+                Responsable responsable = new Responsable(login, pwd);
+                if (controller.ControleConnexion(responsable))
+                {
+                    frmPersonnel frm = new frmPersonnel();
+                    frm.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("login ou mot de passe incorrect", "Alerte");
+                }
             }
         }
 
         /// <summary>
-        /// Permet d'appeler la méthode btnConnexion_Click lorsqu'on appui sur la touche entrer
+        /// Appel de la méthode BtnEntrer 
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void BtnEntrer(object sender, KeyPressEventArgs e)
+        private void txtPwd_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar.Equals(Keys.Enter))
             {
@@ -51,29 +79,17 @@ namespace MediaTek86.view
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnConnexion_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            BtnEntrer(null, null);
-        }
-
-        /// <summary>
-        /// Appel de la méthode BtnEntrer 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtPwd_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            BtnEntrer(null, null);
-        }
-
-        /// <summary>
-        /// Appel de la méthode BtnEntrer
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
-            BtnEntrer(null, null);
+            if (e.KeyChar.Equals(Keys.Enter))
+            {
+                btnConnexion_Click(null, null);
+            }
+        }
+
+        private void frmConnexion_Load(object sender, EventArgs e)
+        {
+            txtLogin.Focus();
         }
     }
 }

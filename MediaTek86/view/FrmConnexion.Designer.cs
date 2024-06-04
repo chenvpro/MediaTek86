@@ -80,7 +80,6 @@ namespace MediaTek86.view
             this.btnConnexion.Text = "se connecter";
             this.btnConnexion.UseVisualStyleBackColor = true;
             this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
-            this.btnConnexion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnConnexion_KeyPress);
             // 
             // lblTitre
             // 
@@ -104,6 +103,7 @@ namespace MediaTek86.view
             this.Controls.Add(this.lblLogin);
             this.Name = "frmConnexion";
             this.Text = "connexion";
+            this.Load += new System.EventHandler(this.frmConnexion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

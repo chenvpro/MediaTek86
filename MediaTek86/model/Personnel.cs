@@ -12,19 +12,20 @@
         /// <summary>
         /// propriété nom de la classe personnel
         /// </summary>
-        public string nom { get; }
+        public string nom { get; set; }
         /// <summary>
         /// propriété prenom de la classe personnel
         /// </summary>
-        public string prenom { get; }
+        public string prenom { get; set; }
         /// <summary>
         /// propriété tel de la classe personnel
         /// </summary>
-        public string tel { get; }
+        public string tel { get; set; }
         /// <summary>
         /// propriété mail de la classe personnel
         /// </summary>
-        public string mail { get; }
+        public string mail { get; set; }
+        public Service service { get; }
         /// <summary>
         /// constructeur de la classe personnel qui permet de remplir ses propriétés
         /// </summary>

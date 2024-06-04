@@ -12,7 +12,7 @@
         /// <summary>
         /// propriété libelle de la classe motif
         /// </summary>
-        public string libelle { get; }
+        public string libelle { get; set; }
         /// <summary>
         /// constructeur de la classe. Permet de remplir les propriété de la classe motif
         /// </summary>

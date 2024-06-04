@@ -10,11 +10,11 @@ namespace MediaTek86.model
         /// <summary>
         /// clé primaire de la classe absence 
         /// </summary>
-        public DateTime datedebut { get; }
+        public DateTime datedebut { get; set; }
         /// <summary>
         /// propriété de la classe absence
         /// </summary>
-        public DateTime datefin { get; }
+        public DateTime datefin { get; set; }
         /// <summary>
         /// constructeur de la classe absence et qui permet de remplir ses propriétés
         /// </summary>
