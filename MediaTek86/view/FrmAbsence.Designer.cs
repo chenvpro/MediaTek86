@@ -1,5 +1,5 @@
 ﻿
-namespace MediaTek86.vues
+namespace MediaTek86.view
 {
     partial class Absence
     {
