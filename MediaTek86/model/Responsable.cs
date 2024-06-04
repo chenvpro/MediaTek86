@@ -9,5 +9,6 @@ namespace MediaTek86.model
     /// </summary>
     class Responsable
     {
+
     }
 }
