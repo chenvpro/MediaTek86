@@ -51,6 +51,8 @@
   <ItemGroup>
     <Compile Include="bddmanager\BddManager.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="dal\AccessAbsence.cs" />
+    <Compile Include="dal\AccessPersonnel.cs" />
     <Compile Include="model\Absence.cs" />
     <Compile Include="model\Motif.cs" />
     <Compile Include="model\Personnel.cs" />
