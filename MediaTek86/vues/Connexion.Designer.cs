@@ -61,6 +61,7 @@ namespace MediaTek86
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(210, 22);
             this.txtLogin.TabIndex = 2;
+            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
             // 
             // txtPwd
             // 
@@ -68,6 +69,7 @@ namespace MediaTek86
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(210, 22);
             this.txtPwd.TabIndex = 3;
+            this.txtPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPwd_KeyPress);
             // 
             // btnConnexion
             // 
@@ -77,6 +79,8 @@ namespace MediaTek86
             this.btnConnexion.TabIndex = 4;
             this.btnConnexion.Text = "se connecter";
             this.btnConnexion.UseVisualStyleBackColor = true;
+            this.btnConnexion.Click += new System.EventHandler(this.btnConnexion_Click);
+            this.btnConnexion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnConnexion_KeyPress);
             // 
             // lblTitre
             // 
