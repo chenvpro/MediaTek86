@@ -3,7 +3,7 @@
     /// <summary>
     /// classe métier liée à la table Personnel
     /// </summary>
-    class Personnel
+    public class Personnel
     {
         /// <summary>
         /// clé primaire de la classe personnel
@@ -25,7 +25,10 @@
         /// propriété mail de la classe personnel
         /// </summary>
         public string mail { get; set; }
-        public Service service { get; }
+        /// <summary>
+        /// propriété service de type service de la classe personnel
+        /// </summary>
+        public Service service { get; set; }
         /// <summary>
         /// constructeur de la classe personnel qui permet de remplir ses propriétés
         /// </summary>
@@ -34,13 +37,15 @@
         /// <param name="prenom">propriété prenom de la classe personnel qui donne le prenom du personnel</param>
         /// <param name="tel">propriété tel de la classe personnel qui donne le numéro de téléphone du personnel</param>
         /// <param name="mail">propriété mail de la classe personnel qui donne le mail du personnel</param>
-        public Personnel (int idpersonnel, string nom, string prenom, string tel, string mail)
+        /// <param name="service">propriété service du personnel qui correspond au service dans lequel le membre est</param>
+        public Personnel (int idpersonnel, string nom, string prenom, string tel, string mail, Service service)
         {
             this.idpersonnel = idpersonnel;
             this.nom = nom;
             this.prenom = prenom;
             this.tel = tel;
             this.mail = mail;
+            this.service = service;
         }
 
     }

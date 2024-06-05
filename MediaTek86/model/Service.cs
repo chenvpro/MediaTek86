@@ -3,7 +3,7 @@
     /// <summary>
     /// classe métier liée à la table Service
     /// </summary>
-    class Service
+    public class Service
     {
         /// <summary>
         /// clé primaire de la classe service

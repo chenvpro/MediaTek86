@@ -61,7 +61,6 @@ namespace MediaTek86.view
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(210, 22);
             this.txtLogin.TabIndex = 2;
-            this.txtLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLogin_KeyPress);
             // 
             // txtPwd
             // 
@@ -69,7 +68,6 @@ namespace MediaTek86.view
             this.txtPwd.Name = "txtPwd";
             this.txtPwd.Size = new System.Drawing.Size(210, 22);
             this.txtPwd.TabIndex = 3;
-            this.txtPwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPwd_KeyPress);
             // 
             // btnConnexion
             // 

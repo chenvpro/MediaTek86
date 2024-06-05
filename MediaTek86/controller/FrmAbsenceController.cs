@@ -2,7 +2,10 @@
 
 namespace MediaTek86.controller
 {
-    class FrmAbsenceController
+    /// <summary>
+    /// contrôleur de FrmAbsence
+    /// </summary>
+    public class FrmAbsenceController
     {
     }
 }

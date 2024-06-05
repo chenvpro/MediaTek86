@@ -2,6 +2,7 @@
 using System;
 using System.Windows.Forms;
 using MediaTek86.model;
+using MediaTek86.bddmanager;
 
 /// <summary>
 /// 
@@ -58,32 +59,6 @@ namespace MediaTek86.view
                 {
                     MessageBox.Show("login ou mot de passe incorrect", "Alerte");
                 }
-            }
-        }
-
-        /// <summary>
-        /// Appel de la méthode BtnEntrer 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtPwd_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar.Equals(Keys.Enter))
-            {
-                btnConnexion_Click(null, null);
-            }
-        }
-
-        /// <summary>
-        /// Appel de la méthode BtnEntrer
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void txtLogin_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar.Equals(Keys.Enter))
-            {
-                btnConnexion_Click(null, null);
             }
         }
 

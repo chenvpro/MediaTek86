@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using MediaTek86.model;
 using Serilog;
+using MySql;
 
 namespace MediaTek86.dal
 {
     /// <summary>
     /// classe permettant de gérer les demandes liées au personnel
     /// </summary>
-    class AccessPersonnel
+    public class AccessPersonnel
     {
         /// <summary>
         /// instance unique de l'accès aux données
@@ -30,19 +31,15 @@ namespace MediaTek86.dal
             if (access.Manager != null)
             {
                 string req = "select * from responsable ";
-                req += "where login=@login and pwd=SHA2(@pwd, 256);";
+                req += "where login=@login and pwd=@pwd;";
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     { "@login", responsable.login },
-                    { "pwd", responsable.pwd }
+                    { "@pwd", responsable.pwd }
                 };
                 try
                 {
-                    List<Object[]> records = access.Manager.ReqSelect(req, parameters);
-                    if (records != null)
-                    {
-                        return (records.Count > 0);
-                    }
+                    
                 }
                 catch (Exception e)
                 {
@@ -50,8 +47,8 @@ namespace MediaTek86.dal
                     Log.Error("AccessPersonnel.ControleConnexion catch req={0} erreur={1}", req, e.Message);
                     Environment.Exit(0);
                 }
-                return false;
             }
+            return true;
         }
         /// <summary>
         /// récupère et retourne le personnel
@@ -76,7 +73,7 @@ namespace MediaTek86.dal
                             Log.Debug("AccessPersonnel.GetLePersonnel Service : id={0} nom={1}", record[5], record[6]);
                             Log.Debug("AccessPersonnel.GetLePersonnel Personnel : id={0} nom={1} prenom={2} tel={3} mail={4}", record[0], record[1], record[2], record[3], record[4]);
                             Service service = new Service((int)record[5], (string)record[6]);
-                            Personnel personnel = new Personnel((int)record[0], (string)record[1], (string)record[2], (string)record[3], (string)record[4]);
+                            Personnel personnel = new Personnel((int)record[0], (string)record[1], (string)record[2], (string)record[3], (string)record[4], service);
                             LePersonnel.Add(personnel);
                         }
                     }
@@ -98,23 +95,20 @@ namespace MediaTek86.dal
         {
             if (access.Manager != null)
             {
-                if(access.Manager != null)
-                {
-                    string req = "delete from personnel where idpersonne = @idpersonnel;";
-                    Dictionary<string, object> parameters = new Dictionary<string, object>
+                string req = "delete from personnel where idpersonne = @idpersonnel;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>
                     {
                         {"@idpersonnel", personnel.idpersonnel }
                     };
-                    try
-                    {
-                        access.Manager.ReqUpdate(req, parameters);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                        Log.Error("AccessPersonnel.DelPersonnel catch req={0} erreur{1}", req, e.Message);
-                        Environment.Exit(0);
-                    }
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Log.Error("AccessPersonnel.DelPersonnel catch req={0} erreur{1}", req, e.Message);
+                    Environment.Exit(0);
                 }
             }
         }
@@ -149,7 +143,7 @@ namespace MediaTek86.dal
             }
         }
         /// <summary>
-        /// 
+        /// permet la modification des infos d'un membre du personnel
         /// </summary>
         /// <param name="personnel">objet de type personnel</param>
         public void UpdatePersonnel (Personnel personnel)

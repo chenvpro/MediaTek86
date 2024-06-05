@@ -3,7 +3,7 @@
     /// <summary>
     /// classe métier liée à la table Motif
     /// </summary>
-    class Motif
+    public class Motif
     {
         /// <summary>
         /// clé primaire de la classe motif

@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Configuration;
 using MediaTek86.bddmanager;
-using Serilog;  
 
 namespace MediaTek86.dal
 {
     /// <summary>
     /// Singleton : classe d'accès à BddManager
     /// </summary>
-    class Access
+    public class Access
     {
         /// <summary>
         /// nom de connexion à la bdd
@@ -33,8 +33,6 @@ namespace MediaTek86.dal
             {
                 Log.Logger = new LoggerConfiguration()
                     .MinimumLevel.Verbose()
-                    .WriteTo.Console()
-                    .WriteTo.File("logs/log.txt")
                     .CreateLogger();
                 connectionString = GetConnectionStringByName(connectionName);
                 Manager = BddManager.GetInstance(connectionString);
@@ -44,6 +42,10 @@ namespace MediaTek86.dal
                 Log.Fatal("Access.Access catch connectionString={0} erreur={1}", connectionString, e.Message);
             }
         }
+        /// <summary>
+        /// création d'une seule instance de la classe
+        /// </summary>
+        /// <returns>retourne l'instance</returns>
         public static Access GetInstance()
         {
             if (instance == null)

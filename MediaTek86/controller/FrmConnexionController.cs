@@ -7,7 +7,7 @@ namespace MediaTek86.controller
     /// <summary>
     /// contrôleur de FrmConnexion
     /// </summary>
-    class FrmConnexionController
+    public class FrmConnexionController
     {
         /// <summary>
         /// objet d'accès aux opérations possibles sur personnel

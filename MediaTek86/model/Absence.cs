@@ -5,7 +5,7 @@ namespace MediaTek86.model
     /// <summary>
     /// Classe métier liée à la table Absences
     /// </summary>
-    class Absence
+    public class Absence
     {
         /// <summary>
         /// clé primaire de la classe absence 

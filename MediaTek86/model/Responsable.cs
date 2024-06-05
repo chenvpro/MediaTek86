@@ -7,7 +7,7 @@ namespace MediaTek86.model
     /// <summary>
     /// classe métier liée à la table responsable
     /// </summary>
-    class Responsable
+    public class Responsable
     {
         /// <summary>
         /// login du responsable

@@ -40,10 +40,14 @@ namespace MediaTek86.view
             this.btnEnregistrerAbsence = new System.Windows.Forms.Button();
             this.btnAnnulerAbsence = new System.Windows.Forms.Button();
             this.btnRetour = new System.Windows.Forms.Button();
+            this.dgvAbsence = new System.Windows.Forms.DataGridView();
+            this.grbAbsence.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsence)).BeginInit();
             this.SuspendLayout();
             // 
             // grbAbsence
             // 
+            this.grbAbsence.Controls.Add(this.dgvAbsence);
             this.grbAbsence.Location = new System.Drawing.Point(12, 12);
             this.grbAbsence.Name = "grbAbsence";
             this.grbAbsence.Size = new System.Drawing.Size(632, 329);
@@ -135,7 +139,17 @@ namespace MediaTek86.view
             this.btnRetour.Text = "retour";
             this.btnRetour.UseVisualStyleBackColor = true;
             // 
-            // Absence
+            // dgvAbsence
+            // 
+            this.dgvAbsence.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAbsence.Location = new System.Drawing.Point(6, 21);
+            this.dgvAbsence.Name = "dgvAbsence";
+            this.dgvAbsence.RowHeadersWidth = 51;
+            this.dgvAbsence.RowTemplate.Height = 24;
+            this.dgvAbsence.Size = new System.Drawing.Size(620, 302);
+            this.dgvAbsence.TabIndex = 0;
+            // 
+            // frmAbsence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -151,8 +165,10 @@ namespace MediaTek86.view
             this.Controls.Add(this.dtpFin);
             this.Controls.Add(this.dtpDebut);
             this.Controls.Add(this.grbAbsence);
-            this.Name = "Absence";
+            this.Name = "frmAbsence";
             this.Text = "Absence";
+            this.grbAbsence.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAbsence)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -171,5 +187,6 @@ namespace MediaTek86.view
         private System.Windows.Forms.Button btnEnregistrerAbsence;
         private System.Windows.Forms.Button btnAnnulerAbsence;
         private System.Windows.Forms.Button btnRetour;
+        private System.Windows.Forms.DataGridView dgvAbsence;
     }
 }

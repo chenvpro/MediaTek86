@@ -30,6 +30,7 @@ namespace MediaTek86.view
         private void InitializeComponent()
         {
             this.grbPersonnel = new System.Windows.Forms.GroupBox();
+            this.dgvPersonnel = new System.Windows.Forms.DataGridView();
             this.btnAjouterPersonnel = new System.Windows.Forms.Button();
             this.btnModifierPersonnel = new System.Windows.Forms.Button();
             this.btnSupprimerPersonnel = new System.Windows.Forms.Button();
@@ -47,16 +48,29 @@ namespace MediaTek86.view
             this.cboService = new System.Windows.Forms.ComboBox();
             this.btnEnregistrerPersonnel = new System.Windows.Forms.Button();
             this.btnAnnulerPersonnel = new System.Windows.Forms.Button();
+            this.grbPersonnel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).BeginInit();
             this.SuspendLayout();
             // 
             // grbPersonnel
             // 
+            this.grbPersonnel.Controls.Add(this.dgvPersonnel);
             this.grbPersonnel.Location = new System.Drawing.Point(13, 13);
             this.grbPersonnel.Name = "grbPersonnel";
             this.grbPersonnel.Size = new System.Drawing.Size(574, 388);
             this.grbPersonnel.TabIndex = 0;
             this.grbPersonnel.TabStop = false;
             this.grbPersonnel.Text = "liste du personnel";
+            // 
+            // dgvPersonnel
+            // 
+            this.dgvPersonnel.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPersonnel.Location = new System.Drawing.Point(7, 22);
+            this.dgvPersonnel.Name = "dgvPersonnel";
+            this.dgvPersonnel.RowHeadersWidth = 51;
+            this.dgvPersonnel.RowTemplate.Height = 24;
+            this.dgvPersonnel.Size = new System.Drawing.Size(561, 360);
+            this.dgvPersonnel.TabIndex = 0;
             // 
             // btnAjouterPersonnel
             // 
@@ -66,6 +80,7 @@ namespace MediaTek86.view
             this.btnAjouterPersonnel.TabIndex = 1;
             this.btnAjouterPersonnel.Text = "ajouter";
             this.btnAjouterPersonnel.UseVisualStyleBackColor = true;
+            this.btnAjouterPersonnel.Click += new System.EventHandler(this.btnAjouterPersonnel_Click);
             // 
             // btnModifierPersonnel
             // 
@@ -192,6 +207,7 @@ namespace MediaTek86.view
             this.btnEnregistrerPersonnel.TabIndex = 16;
             this.btnEnregistrerPersonnel.Text = "enregistrer";
             this.btnEnregistrerPersonnel.UseVisualStyleBackColor = true;
+            this.btnEnregistrerPersonnel.Click += new System.EventHandler(this.btnEnregistrerPersonnel_Click);
             // 
             // btnAnnulerPersonnel
             // 
@@ -227,6 +243,9 @@ namespace MediaTek86.view
             this.Controls.Add(this.grbPersonnel);
             this.Name = "frmPersonnel";
             this.Text = "Personnel";
+            this.Load += new System.EventHandler(this.frmPersonnel_Load);
+            this.grbPersonnel.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnel)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +271,6 @@ namespace MediaTek86.view
         private System.Windows.Forms.ComboBox cboService;
         private System.Windows.Forms.Button btnEnregistrerPersonnel;
         private System.Windows.Forms.Button btnAnnulerPersonnel;
+        private System.Windows.Forms.DataGridView dgvPersonnel;
     }
 }

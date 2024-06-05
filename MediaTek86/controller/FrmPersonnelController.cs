@@ -8,12 +8,16 @@ namespace MediaTek86.controller
     /// <summary>
     /// contrôleur de FrmPersonnel
     /// </summary>
-    class FrmPersonnelController
+    public class FrmPersonnelController
     {
         /// <summary>
         /// objet d'accès aux opérations possibles sur Personnel
         /// </summary>
         private readonly AccessPersonnel accesspersonnel;
+        /// <summary>
+        /// objet d'accès aux opérations possibles sur service
+        /// </summary>
+        private readonly AccessService accessservice;
         /// <summary>
         /// objet d'accès aux opérations possibles sur Absence
         /// </summary>
@@ -24,7 +28,7 @@ namespace MediaTek86.controller
         public FrmPersonnelController()
         {
             accesspersonnel = new AccessPersonnel();
-            accessabsence = new AccessAbsence();
+            accessservice = new AccessService();
         }
         /// <summary>
         /// récupère et retourne les infos des membres du personnel
@@ -33,6 +37,14 @@ namespace MediaTek86.controller
         public List<Personnel> GetLePersonnel()
         {
             return accesspersonnel.GetLePersonnel();
+        }
+        /// <summary>
+        /// récupère et retourne les services
+        /// </summary>
+        /// <returns></returns>
+        public List<Service> GetLesServices()
+        {
+            return accessservice.GetLesServices();
         }
         /// <summary>
         /// demande de suppression d'un membre du personnel
